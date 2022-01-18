@@ -29,7 +29,7 @@ public class Cliente {
 		BufferedReader inFromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 
 		// Send a line to server
-		outToServer.writeBytes(suma + '\n');
+		outToServer.writeBytes(suma + '\n'); //IMPORTANTE '\n' O NO ENVIA NADA, DESDE EL SERVIDOR LO MISMO!!!!!!!!!!!
 
 		// Read a line from server
 		resultado = inFromServer.readLine();

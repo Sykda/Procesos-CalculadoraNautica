@@ -52,7 +52,7 @@ public class Hilo implements Runnable {
 				}				
 
 				String modifiedSentence=String.valueOf(resultado);				
-				outToClient.writeBytes(modifiedSentence);
+				outToClient.writeBytes(modifiedSentence+ '\n');
 
 				System.out.println("CLIENT Conectado desde: " + connectionSocket.getInetAddress().getHostAddress() + ":"
 						+ connectionSocket.getPort());
