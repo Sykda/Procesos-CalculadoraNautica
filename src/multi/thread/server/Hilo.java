@@ -57,7 +57,9 @@ public class Hilo implements Runnable {
 				System.out.println("CLIENT Conectado desde: " + connectionSocket.getInetAddress().getHostAddress() + ":"
 						+ connectionSocket.getPort());
 				System.out.println("SERVER Client sentence: " + clientSentence);
-				System.out.println("SERVER Modified sentence: " + resultado);
+				System.out.println("SERVER Modified sentence: " + resultado+ '\n');
+				
+				break;
 				
 				
 			} catch (Exception ex) {
