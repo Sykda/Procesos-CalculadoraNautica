@@ -8,7 +8,6 @@ import java.util.Scanner;
 
 public class Cliente {
 
-	
 	public static void main(String[] args) throws Exception {
 
 		String resultado;
@@ -21,23 +20,29 @@ public class Cliente {
 
 		System.out.println("Introduce una operación: ");
 		String suma = sc.nextLine();
-		
+
 		// Create an output stream attached to the socket
 		DataOutputStream outToServer = new DataOutputStream(clientSocket.getOutputStream());
 
 		// Create an input stream attached to socket
 		BufferedReader inFromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 
-		// Send a line to server
-		outToServer.writeBytes(suma + '\n'); //IMPORTANTE '\n' O NO ENVIA NADA, DESDE EL SERVIDOR LO MISMO!!!!!!!!!!!
+		if (suma.contains("apagar")) {
+			outToServer.writeBytes("apagar");
+		} else {
 
-		// Read a line from server
-		resultado = inFromServer.readLine();
+			// Send a line to server
+			outToServer.writeBytes(suma + '\n'); // IMPORTANTE '\n' O NO ENVIA NADA, DESDE EL SERVIDOR LO
+													// MISMO!!!!!!!!!!!
 
-		System.out.println("FROM SERVER: " + resultado);
+			// Read a line from server
+			resultado = inFromServer.readLine();
 
-		clientSocket.close();
-		sc.close();
+			System.out.println("FROM SERVER: " + resultado);
+
+			clientSocket.close();
+			sc.close();
+		}
 
 	}
 }

@@ -30,6 +30,10 @@ public class Hilo implements Runnable {
 
 				// Read in line from socket
 				clientSentence = inFromClient.readLine();
+				if (clientSentence.contains("apagar")){	
+					connectionSocket.close();
+					
+				}else {
 				
 				StringTokenizer st = new StringTokenizer(clientSentence);
 				int x= Integer.parseInt(st.nextToken());
@@ -49,7 +53,8 @@ public class Hilo implements Runnable {
 				}
 				else if (clientSentence.contains("/")) {
 					resultado= x/y;
-				}				
+				}	
+									
 
 				String modifiedSentence=String.valueOf(resultado);				
 				outToClient.writeBytes(modifiedSentence+ '\n');
@@ -58,14 +63,15 @@ public class Hilo implements Runnable {
 						+ connectionSocket.getPort());
 				System.out.println("SERVER Client sentence: " + clientSentence);
 				System.out.println("SERVER Modified sentence: " + resultado+ '\n');
+				}
 				
 				break;
 				
 				
 			} catch (Exception ex) {
 				System.out.println("Error: "+ ex.getMessage());
-			}
-			
+				break;
+			}			
 			
 		}
 		
